@@ -16,18 +16,18 @@ public class SuccessfulLogin {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(5))
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(250))
                 .ignoring(NoSuchElementException.class);
 
         driver.get("https://practicetestautomation.com/practice-test-login/");
         driver.manage().window().maximize();
 
         WebElement usernameElement = wait.until(webDriver -> driver.findElement(By.cssSelector("#username")));
-        usernameElement.sendKeys("student");
+        usernameElement.sendKeys(System.getenv("TEST_LOGIN"));
 
         WebElement passwordElement = driver.findElement(By.cssSelector("#password"));
-        passwordElement.sendKeys("Password123");
+        passwordElement.sendKeys(System.getenv("TEST_PASSWORD"));
 
         WebElement submitButtonElement = driver.findElement(By.cssSelector("#submit"));
         submitButtonElement.click();

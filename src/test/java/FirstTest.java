@@ -13,10 +13,10 @@ public class FirstTest {
         driver.manage().window().maximize();
 
         WebElement usernameElement = driver.findElement(By.cssSelector("#user_email_login"));
-        usernameElement.sendKeys("gary.b+demo@browserstack.com");
+        usernameElement.sendKeys(System.getenv("LOGIN_USERNAME"));
 
         WebElement passwordElement = driver.findElement(By.cssSelector("#user_password"));
-        passwordElement.sendKeys("Nathan65ctu!!");
+        passwordElement.sendKeys(System.getenv("LOGIN_PASSWORD"));
 
         WebElement submitButtonElement = driver.findElement(By.cssSelector("#user_submit"));
         submitButtonElement.click();

@@ -23,10 +23,10 @@ public class FailedLogin {
         driver.manage().window().maximize();
 
         WebElement usernameElement = wait.until(webDriver -> driver.findElement(By.cssSelector("#username")));
-        usernameElement.sendKeys("wrong-student");
+        usernameElement.sendKeys(System.getenv("INCORRECT_TEST_LOGIN"));
 
         WebElement passwordElement = driver.findElement(By.cssSelector("#password"));
-        passwordElement.sendKeys("Password123");
+        passwordElement.sendKeys(System.getenv("INCORRECT_TEST_PASSWORD"));
 
         WebElement submitButtonElement = driver.findElement(By.cssSelector("#submit"));
         submitButtonElement.click();
